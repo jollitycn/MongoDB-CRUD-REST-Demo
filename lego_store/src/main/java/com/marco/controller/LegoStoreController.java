@@ -55,6 +55,11 @@ public class LegoStoreController {
         return legoSetService.getBestSellers();
     }
 
+    @RequestMapping(value = "/fullTextSearch/{searchText}", method = RequestMethod.GET)
+    public Collection<LegoSet> getFullTextSearch(@PathVariable String searchText) {
+        return legoSetService.getFullTextSearch(searchText);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public void add(@RequestBody LegoSet legoSet) {
         legoSetService.add(legoSet);

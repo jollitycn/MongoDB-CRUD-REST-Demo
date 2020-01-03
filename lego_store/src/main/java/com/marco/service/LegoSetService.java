@@ -8,6 +8,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -82,5 +83,10 @@ public class LegoSetService {
         // pass the filter-query to findAll()
         Collection<LegoSet> result = (Collection<LegoSet>) legoSetRepository.findAll(bestSellerFilter);
         return result;
+    }
+
+    public Collection<LegoSet> getFullTextSearch(String text) {
+        TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matching(text);
+        return legoSetRepository.findAllBy(textCriteria);
     }
 }

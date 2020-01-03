@@ -17,6 +17,8 @@ public interface LegoSetRepository extends MongoRepository<LegoSet, String>, Que
 
     Collection<LegoSet> findAllByDifficultyAndNameStartingWith(LegoDifficulty difficulty, String name);
 
+    Collection<LegoSet> findAllBy(TextCriteria textCriteria);
+
     @Query("{'delivery.deliveryFee' : {$lt : ?0}}") //in mongo-db, the pure query statement = db.getCollection('legosets').find({"delivery.deliveryFee" : {$lt : value}})
     Collection<LegoSet> findByDeliveryFeeLessThan(int price);
 

@@ -1,8 +1,12 @@
 package com.marco.model;
 
+import org.springframework.data.mongodb.core.index.TextIndexed;
+
 public class ProductReview {
     // fields
+    @TextIndexed
     private String userName;
+
     private int rating;
 
     //constructor
