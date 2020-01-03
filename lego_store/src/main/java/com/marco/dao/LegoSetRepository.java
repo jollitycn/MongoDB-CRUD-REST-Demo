@@ -10,7 +10,7 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import java.util.Collection;
 
-public interface LegoSetRepository extends MongoRepository<LegoSet, String> {
+public interface LegoSetRepository extends MongoRepository<LegoSet, String>, QuerydslPredicateExecutor<LegoSet> {
     Collection<LegoSet> findAllByThemeContains(String theme, Sort sort);
 
     Collection<LegoSet> findAllByDifficultyEquals(String level);
