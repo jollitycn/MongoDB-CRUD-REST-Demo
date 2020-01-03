@@ -45,6 +45,11 @@ public class LegoStoreController {
         return legoSetService.getByDeliveryFeeLessThan(price);
     }
 
+    @RequestMapping(value = "/greateReviews/{rating}", method = RequestMethod.GET)
+    public Collection<LegoSet> getByReviewsRatingGreaterEqualThan(@PathVariable int rating) {
+        return legoSetService.getByReviewsRatingGreaterEqualThan(rating);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public void add(@RequestBody LegoSet legoSet) {
         legoSetService.add(legoSet);

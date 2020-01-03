@@ -58,4 +58,9 @@ public class LegoSetService {
         Collection<LegoSet> result = legoSetRepository.findByDeliveryFeeLessThan(price);
         return result;
     }
+
+    public Collection<LegoSet> getByReviewsRatingGreaterEqualThan(int rating) {
+        Collection<LegoSet> result = legoSetRepository.findByReviewRatingGreaterEqualThan(rating);
+        return result;
+    }
 }

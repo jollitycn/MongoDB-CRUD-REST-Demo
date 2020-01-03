@@ -17,6 +17,9 @@ public interface LegoSetRepository extends MongoRepository<LegoSet, String> {
 
     Collection<LegoSet> findAllByDifficultyAndNameStartingWith(LegoDifficulty difficulty, String name);
 
-    @Query("{'delivery.deliveryFee' : {$lt : ?0}}")    //in mongo-db, the pure query statement = db.getCollection('legosets').find({"delivery.deliveryFee" : {$lt : value}})
+    @Query("{'delivery.deliveryFee' : {$lt : ?0}}") //in mongo-db, the pure query statement = db.getCollection('legosets').find({"delivery.deliveryFee" : {$lt : value}})
     Collection<LegoSet> findByDeliveryFeeLessThan(int price);
+
+    @Query("{'reviews.rating' : {$gte : ?0}}") // db.getCollection('legosets').find({"reviews.rating" : {$gte : 8}})  ,for more operators >> https://docs.mongodb.com/manual/reference/operator/query/
+    Collection<LegoSet> findByReviewRatingGreaterEqualThan(int rating);
 }
