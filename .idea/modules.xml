@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lego_store/lego_store.iml" filepath="$PROJECT_DIR$/lego_store/lego_store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo_crud_parent.iml" filepath="$PROJECT_DIR$/mongo_crud_parent.iml" />
+    </modules>
+  </component>
+</project>
