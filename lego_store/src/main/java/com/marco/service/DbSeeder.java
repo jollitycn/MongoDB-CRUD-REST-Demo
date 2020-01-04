@@ -14,7 +14,7 @@ import java.util.Collection;
 /**
  * just to pre-populae some values for testing
  */
-@Service
+//@Service
 public class DbSeeder implements CommandLineRunner {
     @Autowired
     private LegoSetRepository legoSetRepository;
