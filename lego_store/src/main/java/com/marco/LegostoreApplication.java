@@ -13,7 +13,7 @@ public class LegostoreApplication {
         SpringApplication.run(LegostoreApplication.class, args);
     }
 
-    @Autowired
+    /*@Autowired
     MongoTemplate mongoTemplate;
 
     @Bean
@@ -23,5 +23,5 @@ public class LegostoreApplication {
         runner.setChangeLogsScanPackage("com.marco");
 
         return runner;
-    }
+    }*/
 }

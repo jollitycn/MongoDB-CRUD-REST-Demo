@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -31,19 +32,26 @@ public class LegoSet {
     private Collection<ProductReview> reviews = new ArrayList<ProductReview>();
     @Field("delivery")
     private DeliveryInfo deliveryInfo;
-    @Transient
+
     private int nbParts;
-    //private PaymentOptions paymentOptions;
+
+    @DBRef
+    private PaymentOptions paymentOptions;
 
     // constructor
     @PersistenceConstructor
-    public LegoSet(String name, String theme, LegoDifficulty difficulty, DeliveryInfo deliveryInfo, Collection<ProductReview> reviews/*, PaymentOptions paymentOptions*/) {
+    public LegoSet(String name,
+                   String theme,
+                   LegoDifficulty difficulty,
+                   DeliveryInfo deliveryInfo,
+                   Collection<ProductReview> reviews,
+                   PaymentOptions paymentOptions) {
         this.name = name;
         this.difficulty = difficulty;
         this.theme = theme;
         this.reviews = reviews;
         this.deliveryInfo = deliveryInfo;
-        //this.paymentOptions  = paymentOptions;
+        this.paymentOptions  = paymentOptions;
     }
 
     // methods
@@ -75,7 +83,7 @@ public class LegoSet {
         return nbParts;
     }
 
-    /*public PaymentOptions getPaymentOptions() {
+    public PaymentOptions getPaymentOptions() {
         return paymentOptions;
-    }*/
+    }
 }

@@ -1,10 +1,7 @@
 package com.marco;
 
 import com.marco.dao.LegoSetRepository;
-import com.marco.model.DeliveryInfo;
-import com.marco.model.LegoDifficulty;
-import com.marco.model.LegoSet;
-import com.marco.model.ProductReview;
+import com.marco.model.*;
 import com.marco.service.LegoSetService;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +36,19 @@ public class LegostoreDatabaseTests {
     }
 
     private void prePopulateTestValues() {
+        /*
+        Payment Options
+         */
+        PaymentOptions creditCardPayment = new PaymentOptions(PaymentType.CreditCard, 0);
+        PaymentOptions payPalPayment = new PaymentOptions(PaymentType.PayPal, 1);
+        PaymentOptions cashPayment = new PaymentOptions(PaymentType.Cash, 10);
+        this.mongoTemplate.insert(creditCardPayment);
+        this.mongoTemplate.insert(payPalPayment);
+        this.mongoTemplate.insert(cashPayment);
+
+        /*
+        Lego sets
+         */
         LegoSet milleniumFalcon = new LegoSet(
                 "Millennium Falcon",
                 "Star Wars",
@@ -48,8 +58,8 @@ public class LegostoreDatabaseTests {
                         new ProductReview("Dan", 7),
                         new ProductReview("Anna", 10),
                         new ProductReview("John", 8)
-                )/*,
-                creditCardPayment*/);
+                ),
+                creditCardPayment);
 
         LegoSet skyPolice = new LegoSet(
                 "Sky Police Air Base",
@@ -59,8 +69,8 @@ public class LegostoreDatabaseTests {
                 Arrays.asList(
                         new ProductReview("Dan", 5),
                         new ProductReview("Andrew", 8)
-                )/*,
-                creditCardPayment*/);
+                ),
+                creditCardPayment);
 
         legoSetRepository.insert(milleniumFalcon);
         legoSetRepository.insert(skyPolice);

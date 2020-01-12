@@ -12,9 +12,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * just to pre-populae some values for testing
+ * just to pre-populate some values for testing
  */
-//@Service
+@Service
 public class DbSeeder implements CommandLineRunner {
     @Autowired
     private LegoSetRepository legoSetRepository;
@@ -30,10 +30,10 @@ public class DbSeeder implements CommandLineRunner {
         /*
         Payment Options
          */
-
         PaymentOptions creditCardPayment = new PaymentOptions(PaymentType.CreditCard, 0);
         PaymentOptions payPalPayment = new PaymentOptions(PaymentType.PayPal, 1);
         PaymentOptions cashPayment = new PaymentOptions(PaymentType.Cash, 10);
+        // there's no cascading, so we need save up front
         this.mongoTemplate.insert(creditCardPayment);
         this.mongoTemplate.insert(payPalPayment);
         this.mongoTemplate.insert(cashPayment);
@@ -50,8 +50,8 @@ public class DbSeeder implements CommandLineRunner {
                         new ProductReview("Dan", 7),
                         new ProductReview("Anna", 10),
                         new ProductReview("John", 8)
-                )/*,
-                creditCardPayment*/);
+                ),
+                creditCardPayment);
 
         LegoSet skyPolice = new LegoSet(
                 "Sky Police Air Base",
@@ -61,8 +61,8 @@ public class DbSeeder implements CommandLineRunner {
                 Arrays.asList(
                         new ProductReview("Dan", 5),
                         new ProductReview("Andrew", 8)
-                )/*,
-                creditCardPayment*/);
+                ),
+                creditCardPayment);
 
         LegoSet mcLarenSenna = new LegoSet(
                 "McLaren Senna",
@@ -72,8 +72,8 @@ public class DbSeeder implements CommandLineRunner {
                 Arrays.asList(
                         new ProductReview("Bogdan", 9),
                         new ProductReview("Christa", 9)
-                )/*,
-                payPalPayment*/);
+                ),
+                payPalPayment);
 
         LegoSet mindstormsEve = new LegoSet(
                 "MINDSTORMS EV3",
@@ -84,8 +84,8 @@ public class DbSeeder implements CommandLineRunner {
                         new ProductReview("Cosmin", 10),
                         new ProductReview("Jane", 9),
                         new ProductReview("James", 10)
-                )/*,
-                cashPayment*/);
+                ),
+                cashPayment);
 
         Collection<LegoSet> initialProducts = Arrays.asList(milleniumFalcon, mindstormsEve,mcLarenSenna,skyPolice);
 
